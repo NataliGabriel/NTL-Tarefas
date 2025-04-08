@@ -2,7 +2,7 @@
 
 namespace NTL_Tarefas.DTOs
 {
-    public class TarefaCriaDTO
+    public class TarefaCriarDTO
     {
         [Required, MaxLength(100)]
         public string Titulo { get; set; }

@@ -2,7 +2,7 @@
 
 namespace NTL_Tarefas.DTOs
 {
-    public class TarefaAtualizaDTO
+    public class TarefaAtualizarDTO
     {
         public string? Titulo { get; set; }
         public string? Descricao { get; set; }
