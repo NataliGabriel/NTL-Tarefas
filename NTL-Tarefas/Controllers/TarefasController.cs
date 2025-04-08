@@ -6,7 +6,7 @@ namespace NTL_Tarefas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TarefasController : Controller
+    public class TarefasController : ControllerBase
     {
         private readonly ITarefaService _service;
 
@@ -33,7 +33,7 @@ namespace NTL_Tarefas.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Atualizar(int id, [FromBody] TarefaAtualizarDTO dto)
         {
-            if (dto == null || dto.Titulo == null && dto.Descricao == null && dto.DataVencimento == null && dto.Status == null)
+            if (dto == null || NenhumCampoPreenchido(dto))
                 return BadRequest("Pelo menos um campo deve ser informado para atualização.");
 
             var tarefa = await _service.AtualizarAsync(id, dto);
@@ -46,5 +46,9 @@ namespace NTL_Tarefas.Controllers
             var sucesso = await _service.DeletarAsync(id);
             return sucesso ? NoContent() : NotFound();
         }
+
+        private bool NenhumCampoPreenchido(TarefaAtualizarDTO dto) =>
+    dto.Titulo == null && dto.Descricao == null && dto.DataVencimento == null && dto.Status == null;
+
     }
 }

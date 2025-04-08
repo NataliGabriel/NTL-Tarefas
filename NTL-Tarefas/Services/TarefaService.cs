@@ -22,15 +22,15 @@ namespace NTL_Tarefas.Services
 
         public async Task<TarefaResponseDTO?> ObterPorIdAsync(int id)
         {
-            var tarefa = await _repo.ObterPorIdAsync(id);
-            return tarefa == null ? null : _mapper.Map<TarefaResponseDTO>(tarefa);
+            var tarefaExistente = await _repo.ObterPorIdAsync(id);
+            return tarefaExistente == null ? null : _mapper.Map<TarefaResponseDTO>(tarefaExistente);
         }
 
         public async Task<TarefaResponseDTO> CriarAsync(TarefaCriarDTO dto)
         {
-            var tarefa = _mapper.Map<Tarefa>(dto);
-            await _repo.CriarAsync(tarefa);
-            return _mapper.Map<TarefaResponseDTO>(tarefa);
+            var tarefaCriar = _mapper.Map<Tarefa>(dto);
+            await _repo.CriarAsync(tarefaCriar);
+            return _mapper.Map<TarefaResponseDTO>(tarefaCriar);
         }
 
         public async Task<TarefaResponseDTO?> AtualizarAsync(int id, TarefaAtualizarDTO dto)

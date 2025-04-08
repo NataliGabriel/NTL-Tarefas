@@ -11,8 +11,14 @@ namespace NTL_Tarefas.Repositories
 
         public TarefaRepository(AppDbContext context) => _context = context;
 
-        public async Task<List<Tarefa>> ObterTodasAsync() => await _context.Tarefas.ToListAsync();
-        public async Task<Tarefa?> ObterPorIdAsync(int id) => await _context.Tarefas.FindAsync(id);
+        public async Task<List<Tarefa>> ObterTodasAsync()
+        {
+            return await _context.Tarefas.AsNoTracking().ToListAsync();
+        }
+        public async Task<Tarefa?> ObterPorIdAsync(int id)
+        {
+            return await _context.Tarefas.AsNoTracking().FirstOrDefaultAsync(t => t.Id == id);
+        }
         public async Task<Tarefa> CriarAsync(Tarefa tarefa)
         {
             _context.Tarefas.Add(tarefa);
