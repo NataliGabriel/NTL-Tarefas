@@ -31,7 +31,7 @@ git checkout feature/api-tarefas
 
 ### 2. Suba o SQL Server com Docker
 
-> Execute o comando abaixo no diretório onde está o `docker-compose.yaml`:
+> Execute o comando abaixo no diretório onde está o `docker-compose.yaml` (caso necessário, você poderá alterar a senha do SQL nesse arquivo):
 
 ```bash
 docker-compose up -d
