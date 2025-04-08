@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NTL_Tarefas.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace NTL_Tarefas.DTOs
 {
@@ -10,5 +11,7 @@ namespace NTL_Tarefas.DTOs
         public string? Descricao { get; set; }
         [Required]
         public DateTime DataVencimento { get; set; }
+        [Required]
+        public StatusEnum Status { get; set; } = StatusEnum.Pendente;
     }
 }
